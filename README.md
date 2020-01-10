@@ -1,36 +1,11 @@
-# 1. Reduce Antd icons bundle size(Load Antd icons on demand)
+## 1. Issure: Antd adds antd-icons which increases bundle size a lot
 
 See related issue:[Antd v3.9.0 adds antd-icons which increases bundle size a lot](https://github.com/ant-design/babel-plugin-import/issues/271).
 
-| Before Optimization| After Optimization|
-|:----:|:----:|
-|![before](./docs/map-before.png) | ![after](./docs/map-after.png)|
-|![before](./docs/build-before.png) | ![after](./docs/build-after.png)|
+## 2. Optimization Target: Reduce Antd icons bundle size(Load Antd icons on demand)
 
-## 2. Config `alias`
-
-See the whole file [src/icons/index.js](./src/icons/index.js)
-```js
-// src/icons/index.js
-
-/**
- * List all antd icons you want to use in your source code
- */
-export {
-
-  // caret-up
-  default as CaretUpFill
-} from '@ant-design/icons/lib/fill/CaretUpFill';
-
-export {
-
-  // caret-down
-  default as CaretDownOutline
-} from '@ant-design/icons/lib/outline/CaretDownOutline';
-
-// and other icons...
-```
-
+## 3. Optimization Steps
+### 3.1. Add Webpack Config
 ```js
 // create-react-app config-overrides.js
 const { override, fixBabelImports } = require('customize-cra');
@@ -51,26 +26,60 @@ module.exports = override(
   }
 )
 ```
-## 3. Cross-References(Icon Component map Icon type attribute)
+### 3.2. Add icons/index.js(export Icon Component on demand)
+See the whole file [src/icons/index.js](./src/icons/index.js)
 ```js
-// src/icons/component_map_type.js(copy from the origin codes)
+// src/icons/index.js
+
+/**
+ * List all antd icons you want to use in your source code
+ */
+export {
+
+  // star
+  default as StarFill
+} from '@ant-design/icons/lib/fill/StarFill';
+
+export {
+
+  // star
+  default as StarOutline
+} from '@ant-design/icons/lib/outline/StarOutline';
+
+// other icons...
+```
+
+``note``: Cross-References(Quick Search)
+
+Icon Component <=> Icon type
+```js
+// src/icons/component_map_type.txt(copy from the node_moudes/antd/dist/antd.js)
 // Theme is Filled
 exports.AccountBookFill = getIcon('account-book', fill, getNode(newViewBox, ...));
 exports.AlertFill = getIcon('alert', fill, getNode(newViewBox, ...));
 exports.AliwangwangFill = getIcon('aliwangwang', fill, getNode(newViewBox, ...));
 exports.AlipayCircleFill = getIcon('alipay-circle', fill, getNode(newViewBox, ...));
+...
 
 // Theme is Outlined
 exports.AccountBookOutline = getIcon('account-book', outline, getNode(newViewBox, ...));
 exports.AlertOutline = getIcon('alert', outline, getNode(newViewBox, ...));
 exports.AliwangwangOutline = getIcon('aliwangwang', outline, getNode(newViewBox, ...));
 exports.AlipayCircleOutline = getIcon('alipay-circle', outline, getNode(newViewBox, ...));
+...
 
-// Two Tone
+// Theme Two Tone
+...
 
-// others
 ```
+
+## 3.3. Optimization Results
+| Before Optimization| After Optimization|
+|:----:|:----:|
+|![before](./docs/map-before.png) | ![after](./docs/map-after.png)|
+|![before](./docs/build-before.png) | ![after](./docs/build-after.png)|
 ## 4. Usage
+### 4.1. Code
 ```js
 // src/App.js
 import React from 'react';
@@ -93,9 +102,10 @@ function App() {
 
 export default App;
 ```
-```Page result```
+### 4.2. Page Result
 ![app result](./docs/app.png)
 
-[more: Antd Icon](https://ant.design/components/icon/)
+## 4.3. More
+[Ant-Design Icon document](https://ant.design/components/icon/)
 
 
