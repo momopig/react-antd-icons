@@ -3,6 +3,24 @@
  */
 export {
 
+  // star
+  default as StarFill
+} from '@ant-design/icons/lib/fill/StarFill';
+
+export {
+
+  // star
+  default as StarOutline
+} from '@ant-design/icons/lib/outline/StarOutline';
+
+export {
+
+  // caret-up
+  default as CaretUpOutline
+} from '@ant-design/icons/lib/outline/CaretUpOutline';
+
+export {
+
   // caret-up
   default as CaretUpFill
 } from '@ant-design/icons/lib/fill/CaretUpFill';

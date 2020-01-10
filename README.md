@@ -54,10 +54,48 @@ module.exports = override(
 ## 3. Cross-References(Icon Component map Icon type attribute)
 ```js
 // src/icons/component_map_type.js(copy from the origin codes)
+// Theme is Filled
 exports.AccountBookFill = getIcon('account-book', fill, getNode(newViewBox, ...));
 exports.AlertFill = getIcon('alert', fill, getNode(newViewBox, ...));
-exports.AlipaySquareFill = getIcon('alipay-square', fill, getNode(newViewBox, ...));
 exports.AliwangwangFill = getIcon('aliwangwang', fill, getNode(newViewBox, ...));
 exports.AlipayCircleFill = getIcon('alipay-circle', fill, getNode(newViewBox, ...));
+
+// Theme is Outlined
+exports.AccountBookOutline = getIcon('account-book', outline, getNode(newViewBox, ...));
+exports.AlertOutline = getIcon('alert', outline, getNode(newViewBox, ...));
+exports.AliwangwangOutline = getIcon('aliwangwang', outline, getNode(newViewBox, ...));
+exports.AlipayCircleOutline = getIcon('alipay-circle', outline, getNode(newViewBox, ...));
+
+// Two Tone
+
 // others
 ```
+## 4. Usage
+```js
+// src/App.js
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+import { Icon } from 'antd';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>The following are ant icons:</p>
+        theme is outlined(default): <Icon type='star'/>
+        theme is filled: <Icon type="star" theme="filled" />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+```Page result```
+![app result](./docs/app.png)
+
+[more: Antd Icon](https://ant.design/components/icon/)
+
+
