@@ -108,4 +108,9 @@ export default App;
 ## 4.3. More
 [Ant-Design Icon document](https://ant.design/components/icon/)
 
+## 5. Reference
+[Let’s Make Our Bundle Size Even Smaller](https://hackernoon.com/lets-make-our-bundle-size-even-smaller-7a5727bb110)
 
+[source-map-explorer](https://github.com/danvk/source-map-explorer#readme)
+
+[reduce-antd-icons-bundle-demo](https://github.com/HeskeyBaozi/reduce-antd-icons-bundle-demo)
