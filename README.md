@@ -9,7 +9,7 @@ See related issue:[Antd v3.9.0 adds antd-icons which increases bundle size a lot
 
 ## 2. Config `alias`
 
-See the whole file [src/icons.js](./src/icons.js)
+See the whole file [src/icons/index.js](./src/icons/index.js)
 ```js
 // src/icons/index.js
 
